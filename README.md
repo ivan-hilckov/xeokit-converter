@@ -7,6 +7,14 @@ to the `xkt` format for the xeokit viewer.
 - @xeokit/xeokit-metadata
 - @xeokit/xeokit-convert
 
+## Pipeline
+
+```bash
+IFC => GLB  |
+            | => XKT
+IFC => JSON |
+```
+
 ## Usage
 
 ```bash

@@ -37,5 +37,5 @@ RUN wget --quiet https://github.com/bimspot/xeokit-metadata/releases/download/1.
   && ln -s /usr/lib/xeokit-metadata/xeokit-metadata /usr/local/bin/xeokit-metadata \
   && rm -rf xeokit-metadata-linux-x64.tar.gz
 
-# Install xeokit-gltf-to-xkt latest version
+# Install xeokit-convert 1.1.4 version
 RUN npm install -g --silent @xeokit/xeokit-convert@1.1.4 commander@9.4.1
