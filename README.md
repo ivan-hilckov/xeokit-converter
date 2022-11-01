@@ -11,7 +11,7 @@ to the `xkt` format for the xeokit viewer.
 
 ```bash
 IFC => GLB  |
-            | => XKT
+            | => XKT + JSON
 IFC => JSON |
 ```
 
@@ -54,6 +54,8 @@ IfcConvert --use-element-guids /data/model.ifc /data/model.glb
 xeokit-metadata /data/model.ifc /data/model.json
 xeokit-convert -s /data/model.glb -m /data/model.json -o /data/model.xkt -l
 ```
+
+You can find the `xkt` and `json` file in the `/data` folder.
 
 ## Environment
 
