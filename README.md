@@ -4,33 +4,38 @@ The image contains all tools needed for the [conversion of IFC files][1]
 to the `xkt` format for the xeokit viewer.
 
 - IfcConvert (IfcOpenShell)
-- COLLADA2GLTF
-- xeokit-gltf-to-xkt
 - xeokit-metadata
+- @xeokit/xeokit-convert
 
 ## Usage
 
 ```
-$ docker pull bimspot/xeokit-converter
+$ docker pull [...]
 ```
 
-See all available tags on [docker hub][5].
+```bash
 
-Using [`bimspot/xeokit-converter`][4] as a base image, all converter tools are
-available in the `PATH`.
+echo "Converting IFC to GLB"
+
+./IfcConvert --use-element-guids model.ifc model.glb
+```
 
 ```bash
-echo "Converting IFC to DAE"
-IfcConvert -v -y --use-element-guids scene.ifc scene.dae
+echo "Converting IFC to GLB with fixing missing IfcSpaces"
 
-echo "Converting DAE to glTF"
-COLLADA2GLTF -v -i scene.dae -o scene.gltf
+./IfcConvert --use-element-guids model.ifc model.glb --exclude=entities IfcOpeningElement
+```
 
-echo "Converting gltf to xkt"
-gltf2xkt -s scene.gltf -o scene.xkt
+```bash
+echo "Extract Metadata JSON from IFC"
 
-echo "Creating metadata json"
-xeokit-metadata scene.ifc scene.json
+xeokit-metadata model.ifc model.json
+```
+
+```bash
+echo "Convert Binary glTF and Metadata to XKT"
+
+@xeokit/xeokit-convert -s model.glb -m model.json -o model.xkt -l
 ```
 
 ## Environment
@@ -48,9 +53,8 @@ Semver applies.
 ~ docker push bimspot/xeokit-converter:1.3.x
 ```
 
-[1]: https://github.com/xeokit/xeokit-gltf-to-xkt
+[1]: https://www.notion.so/Converting-IFC-Models-to-XKT-using-Open-Source-Tools-A-Simpler-Pipeline-02d45ba457eb4f808f63bcacb71a4fb3
 [2]: https://cloud.docker.com/u/bimspot/repository/docker/bimspot/ifcopenshell
 [3]: mcr.microsoft.com/dotnet/core/runtime:2.2-bionic
 [4]: https://cloud.docker.com/u/bimspot/repository/docker/bimspot/xeokit-converter
 [5]: https://hub.docker.com/r/bimspot/xeokit-converter
-

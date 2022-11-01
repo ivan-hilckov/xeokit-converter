@@ -9,10 +9,11 @@ RUN apt-get -qq update && apt-get -qq install -y \
   git \
   python3.8 \
   curl \
-  && curl -sL https://deb.nodesource.com/setup_12.x | bash - \
+  && curl -sL https://deb.nodesource.com/setup_16.x | bash - \
   && apt-get install nodejs -y \
   && apt autoremove -qq  -y \
-  && rm -r /var/lib/apt/lists/*
+  && rm -r /var/lib/apt/lists/* \
+  && npm i -g --silent npm@8.19.2
 
 # ----------------------------------------------------------------------------
 # Converting tools
@@ -29,7 +30,7 @@ RUN wget --quiet https://s3.amazonaws.com/ifcopenshell-builds/IfcConvert-v0.7.0-
   && rm -rf IfcConvert-v0.7.0-e44e03f-linux64.zip
 
 # Install xeokit-metadata version 1.0.0 
-RUN wget --quiet https://github.com/bimspot/xeokit-metadata/releases/download/1.0.0/xeokit-metadata-linux-x64.tar.gz \
+RUN wget --quiet https://github.com/bimspot/xeokit-metadata/releases/download/1.0.1/xeokit-metadata-linux-x64.tar.gz \
   && tar -zxvf xeokit-metadata-linux-x64.tar.gz \
   && chmod +x xeokit-metadata-linux-x64/xeokit-metadata \
   && cp -r xeokit-metadata-linux-x64/ /usr/lib/xeokit-metadata \
@@ -37,6 +38,5 @@ RUN wget --quiet https://github.com/bimspot/xeokit-metadata/releases/download/1.
   && rm -rf xeokit-metadata-linux-x64.tar.gz
 
 # Install xeokit-gltf-to-xkt latest version
-RUN npm install npm@latest -g \
-  && npm install @xeokit/xeokit-convert -g
+RUN npm install -g --silent @xeokit/xeokit-convert@1.1.4 
 
