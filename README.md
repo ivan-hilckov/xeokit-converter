@@ -4,7 +4,7 @@ The image contains all tools needed for the [conversion of IFC files][1]
 to the `xkt` format for the xeokit viewer.
 
 - IfcConvert (IfcOpenShell)
-- xeokit-metadata
+- @xeokit/xeokit-metadata
 - @xeokit/xeokit-convert
 
 ## Usage
