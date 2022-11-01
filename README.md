@@ -15,6 +15,8 @@ IFC => GLB  |
 IFC => JSON |
 ```
 
+![pipeline](https://raw.githubusercontent.com/ivan-hilckov/xeokit-converter/master/pipeline.png)
+
 ## Usage
 
 ```bash
