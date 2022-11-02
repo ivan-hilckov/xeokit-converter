@@ -62,6 +62,13 @@ You can find the `xkt` and `json` file in the `/data` folder.
 The `IfcConvert` library is available through [`bimspot/ifcopenshell`][2].
 The xeokit-converter image is based on the [bionic dotnet runtime][3].
 
+## Docker b9uild & run
+
+```
+docker build -t xeokit-convert .
+docker run -v $(pwd)/data:/data/ -it xeokit-convert xeokit-convert-ifc /data/model.ifc
+```
+
 [1]: https://www.notion.so/Converting-IFC-Models-to-XKT-using-Open-Source-Tools-A-Simpler-Pipeline-02d45ba457eb4f808f63bcacb71a4fb3
 [2]: https://cloud.docker.com/u/bimspot/repository/docker/bimspot/ifcopenshell
 [3]: mcr.microsoft.com/dotnet/core/runtime:2.2-bionic
