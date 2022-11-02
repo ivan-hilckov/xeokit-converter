@@ -1,0 +1,6 @@
+#!/bin/sh
+set -e
+BASE_NAME="${1%.*}"
+IfcConvert -y --use-element-guids $1 ${BASE_NAME}.glb
+xeokit-metadata $1 ${BASE_NAME}.json
+xeokit-convert -s ${BASE_NAME}.glb -m ${BASE_NAME}.json -o ${BASE_NAME}.xkt -l
